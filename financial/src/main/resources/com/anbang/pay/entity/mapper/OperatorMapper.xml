@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Operator">
+    <sql id="PAY_OPERATOR_COLS">ID,OPTIMISTIC,USER_NAME,REAL_NAME</sql>
+    <resultMap id="PAY_OPERATOR_MAPS" type="com.anbang.pay.entity.Operator">
+        <id column="ID" property="id" javaType="java.lang.Long"></id>
+        <id column="OPTIMISTIC" property="optimistic" javaType="java.lang.Long"></id>
+        <result column="USERNAME" property="userName" javaType="java.lang.String"></result>
+        <result column="REALNAME" property="realName" javaType="java.lang.String"/>
+
+    </resultMap>
+    <select id="selectById" resultMap="PAY_OPERATOR_MAPS">
+        select <include refid="PAY_OPERATOR_COLS"/> from PAY_OPERATOR where id = #{id}
+    </select>
+    <select id="getByVO" resultMap="PAY_OPERATOR_MAPS">
+        SELECT <include refid="PAY_OPERATOR_COLS"/>
+        FROM PAY_OPERATOR
+    </select>
+</mapper>
